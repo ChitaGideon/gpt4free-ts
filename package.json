@@ -3,10 +3,19 @@
   "version": "0.0.1",
   "description": "gpt4free typescript version",
   "main": "index.js",
+"main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist"
+  },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
-    "test": "ts-node test.ts",
-    "start": "ts-node index.ts",
-    "build": "tsc"
+    "dev": "tsup index.ts --format cjs,esm --sourcemap --dts --watch --onSuccess \"node dist/index.js\"",
+    "start": "node dist/index.js",
+    "build": "tsup index.ts --format cjs,esm --sourcemap --dts --clean"
   },
   "keywords": [
     "git4free",
@@ -34,6 +43,7 @@
     "prettier-plugin-packagejson": "^2",
     "terser": "^5.19.2",
     "ts-node": "^10.9.1",
+     "tsup": "^8.0.2",
     "typescript": "^5.0.4"
   },
   "dependencies": {
